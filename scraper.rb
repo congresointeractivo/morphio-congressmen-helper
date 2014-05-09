@@ -50,8 +50,8 @@ end
 class CongressmenProfiles < PeopleStorage
   def initialize()
     super()
-    @location = 'http://pmocl.popit.mysociety.org/api/v0.1/persons/?per_page=200'
-    @location_organizations = 'http://pmocl.popit.mysociety.org/api/v0.1/organizations/'
+    @location = 'http://legisladores-ar.popit.mysociety.org/api/v0.1/persons/?per_page=200'
+    @location_organizations = 'http://legisladores-ar.popit.mysociety.org/api/v0.1/organizations/'
   end
 
   def process
@@ -76,11 +76,7 @@ class CongressmenProfiles < PeopleStorage
       'name' => I18n.transliterate(congressman['name']),
       'chamber' => congressman['title'],
       'district' => I18n.transliterate(congressman['represent'].first['district']).gsub('?','ta.'),
-      'commune' => I18n.transliterate(congressman['represent'].first['comunas']),
-      'region' => I18n.transliterate(congressman['represent'].first['region']),
       'profile_image' => '',
-      'organization_id' => '',
-      'organizations' => organizations,
       'date_scraped' => Date.today.to_s
     }
     if !congressman['images'].nil? then record['profile_image'] = congressman['images'].first['url'] end
