@@ -89,8 +89,10 @@ class CongressmenProfiles < PeopleStorage
     }
     if !congressman['images'].nil? then 
       firstimage = congressman['images'].first;
-      firsturl = firstimage['url'];
-      record['profile_image'] = firsturl;
+      if !firstimage.nil? then
+        firsturl = firstimage['url'];
+        record['profile_image'] = firsturl;
+      end
     end  
     if !organizations.empty? then record['organization_id'] = congressman_organization_id end
     return record
