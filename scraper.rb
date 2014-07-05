@@ -50,7 +50,7 @@ end
 class CongressmenProfiles < PeopleStorage
   def initialize()
     super()
-    @location = 'http://legisladores-ar.popit.mysociety.org/api/v0.1/persons/?per_page=200'
+    @location = 'http://legisladores-ar.popit.mysociety.org/api/v0.1/persons/?per_page=400'
     @location_organizations = 'http://legisladores-ar.popit.mysociety.org/api/v0.1/organizations/'
   end
 
