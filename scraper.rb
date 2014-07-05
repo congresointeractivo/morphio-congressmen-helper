@@ -66,12 +66,13 @@ class CongressmenProfiles < PeopleStorage
   end
 
   def get_info congressman
+    chamber = "senador";
+
     organizations = String.new
     if !congressman['memberships'].empty?
       congressman_organization_id = congressman['memberships'].first['organization_id']
       organizations = get_memberships congressman_organization_id
 
-      chamber = "senador";
       congressman['memberships'].each { |member| 
         if member["role"] == "Diputado" then
           chamber = "diputado";
