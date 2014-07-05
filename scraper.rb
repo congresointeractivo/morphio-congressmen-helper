@@ -73,9 +73,9 @@ class CongressmenProfiles < PeopleStorage
 
       chamber = "senador";
       congressman['memberships'].each { |member| 
-        if member.role == "Diputado" {
+        if member.role == "Diputado" then
           chamber = "diputado";
-        }
+        end
       }
     end
     record = {
