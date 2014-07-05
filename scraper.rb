@@ -70,11 +70,18 @@ class CongressmenProfiles < PeopleStorage
     if !congressman['memberships'].empty?
       congressman_organization_id = congressman['memberships'].first['organization_id']
       organizations = get_memberships congressman_organization_id
+
+      chamber = "senador";
+      congressman['memberships'].each { |member| 
+        if member.role == "Diputado" {
+          chamber = "diputado";
+        }
+      }
     end
     record = {
       'uid' => congressman['id'],
       'name' => I18n.transliterate(congressman['name']),
-      'chamber' => congressman['title'],
+      'chamber' => chamber,
       'district' => congressman['district'] ? I18n.transliterate(congressman['district']).gsub('?','ta.') : "",
       'profile_image' => '',
       'date_scraped' => Date.today.to_s
@@ -98,6 +105,7 @@ class CongressmenProfiles < PeopleStorage
     end
     return organizations
   end
+
 end
 
 
